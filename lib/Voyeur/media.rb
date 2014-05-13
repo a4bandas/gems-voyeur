@@ -10,7 +10,7 @@ module Voyeur
 
     def get_info
       output = ''
-      status = Open4::popen4("/home/deploy/bin/:wq!ffmpeg -i #{@filename}") do |pid, stdin, stdout, stderr|
+      status = Open4::popen4("/home/deploy/bin/ffmpeg -i #{@filename}") do |pid, stdin, stdout, stderr|
         output = stderr.read.strip
       end
       @raw_duration = $1 if output =~ /Duration: (\d+:\d+:\d+.\d+)/
